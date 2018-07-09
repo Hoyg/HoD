@@ -1,9 +1,9 @@
-# Title: 
+# Cloud Native with Serverless
 
-# Version: 2018.1
-# Author: David Sanchez
-# Level 200
-# Duration: 25-30 minutes
+## Version: 2018.1
+## Author: David Sanchez
+## Level 200
+## Duration: 1 hour
 
 # Overview 
  
@@ -15,6 +15,7 @@ Azure offers a comprehensive set of cloud platform services that make it easy to
 * Use **Event Grid** to power your event-driven and serverless apps.
 
 # Key Takeaway
+
 In this demo, we are showing the capabilities and advantages of building cloud native apps in Microsoft Azure. 
 
 This demo is based on SmartHotel360, which is a fictitious smart hospitality company showcasing the future of connected travel.
@@ -44,11 +45,11 @@ In this scenario, we have developed a website in Node.js to analyze customer sen
 
 1. Launch **Visual Studio Code** and open the repository that was cloned. Open the **arm** folder within the Visual Studio Code editor under the path **C:\Repos\CloudNative**.
 
-1. Click the PowerShell script file called **Deploy-AzureResourceGroup.ps1** and notice the PowerShell Integrated terminal will show up automatically at the bottom of the Visual Studio Code editor. 
+1. Click the PowerShell script file called **Deploy-AzureResourceGroup.ps1** and notice the PowerShell Integrated Console terminal will show up automatically at the bottom of the Visual Studio Code editor. 
 
-   Type the command **.\Deploy-AzureResourceGroup.ps1** and wait for the execution to complete. 
+   Type the command **.\Deploy-AzureResourceGroup.ps1**, hit **Enter** and wait for the execution to complete. 
 
-    >It can take up to 8 minutes to complete the script execution.
+    >It can take up to 3 minutes to complete the script execution.
 
     ```
     PS C:\Repos\CloudNative\arm> .\Deploy-AzureResourceGroup.ps1
@@ -74,7 +75,7 @@ With the script execution, a resource group with all the services required for t
 
 ## Exercise 3: Configuring Azure Logic App
 
-1. Click the created Logic App from the resource group list and click the **Logic App designer** option.
+1. Click the created Logic App from the resource group list and click the **Logic App designer** option from its menu list.
 
 1. Select the common trigger **When a new tweet is posted** and then click on the **Sign in** button in the Twitter trigger with the following credentials:
 
@@ -113,17 +114,23 @@ With the script execution, a resource group with all the services required for t
 
 1. In the Visual Studio Code editor, open the **Functions** folder which is under the path **C:\Repos\CloudNative**. 
 
-1. Click the **local.settings.json** file and provide the string connections for Azure Storage, Cosmos DB (SQL API) and Cognitive API. We will find these connections strings in the Azure Portal.
+1. Click the **local.settings.json** file and provide the string connections for Azure Storage, Cosmos DB (SQL API). We will find these connections strings in the Azure Portal.
 
-   Alternatively, click the **Azure icon** in Visual Studio Code editor. Expand the **Azure Hero Solutions subscription** under **Functions, Storage, Cosmos DB (SQL API)** windows, right click the created resource and click **Copy Connection String** to copy the Connection Strings. Paste the values appropriately in the json file. Save and close the file. 
+   Alternatively, click the **Azure icon** in Visual Studio Code editor. It takes 1-3 minutes to load the data. Expand the **Azure Hero Solutions subscription** under **Functions, Storage, Cosmos DB (SQL API)** windows, right click the created resource and click **Copy Connection String** to copy the Connection Strings. Paste the values appropriately in the json file.  
 
     ![](Images/9-FunctionSettings.png)
 
-1. Click the **dbconfig.js** file located in the        **AnalizePendingTweet** folder under the Explorer to see its content and provide the **endpoint** and **key** values of **Gremlin Endpoint** which is available in the overview page of the Graph API Cosmos db in the Azure Portal. Save and close the file. 
+1. For Cognitive API key, navigate back to the resources list and click the **Coginitive Services** resource (starts with sh360cognitive...), click the **Keys** option in the menu, copy the **Key 1** value and paste the value for the **COGNITIVE_SERVICES_API_KEY** variable. Save and close the file.
+
+    ![](Images/31-CognitiveServicesKey.png)
+    
+
+1. Click the **dbconfig.js** file located in the        **AnalizePendingTweet** folder under the Explorer to see its content and provide the **endpoint**, **key** values of **Gremlin Endpoint** which is available in the overview page of the Graph API Cosmos db in the Azure Portal. Save and close the file. 
 
    > The endpoint value must not include the protocol (https://) and the port number. 
 
     ![](Images/10-GraphEndpoint.png)
+    ![](Images/11-GraphDbConnection.png)
 
 1. In the **Integrated terminal (View menu)** window of the Visual Studio Code Editor, execute the following command: 
 
@@ -135,19 +142,22 @@ With the script execution, a resource group with all the services required for t
 
     > **Talk Track :** We have to configure the database connection to the Cosmos Graph DB (Gremlin), install the Cosmos DB package and update the npm packages in the AnalyzePendingTweet folder. 
 
-1. Execute the following commands in the Integrated terminal window to restore the packages. 
+1. Execute the following commands one after the other in the Integrated terminal window to restore the packages. 
 
     ```
     cd AnalyzePendingTweet
+    ```
+    ```
     npm install
     ```
+
     ![](Images/13-RestoringPackages.png)
 
 ## Exercise 5: Debugging the Azure Function locally
 
 1. Press **F5** or use the debug button in Visual Studio Code to debug the Azure Function locally. 
 
-    ![](Images/14-FunctionDebugging.png)
+    ![](Images/14-FunctionDebugging.png) 
 
 1. Post a tweet with the hashtag **#SmartHotel360**.
 
@@ -165,7 +175,11 @@ With the script execution, a resource group with all the services required for t
 
     ![](Images/18-GraphData.png)
 
-1. Right-click in the **Function** folder under Explorer and click the option **Deploy to Function App**, select the subscription and the Function App to create a package and deploy into the Azure function.
+1. Right-click in the **Function** folder under Explorer and click the option **Deploy to Function App**, select the subscription and the Function App to create a package and deploy into the Azure function. 
+
+   > If a warning pops-up, click **Yes** to override any current setup and proceed with the deployment.
+
+    ![](Images/31-DeploytoFunctionwarning.png)
 
     ![](Images/19-DeployingAzureFunction.png)
 
@@ -197,7 +211,7 @@ With the script execution, a resource group with all the services required for t
 
     ![](Images/25-DebuggingWeb.png)
 
-1. Open a new tab in the Edge browser and type - http://localhost:3000. Click on one of the points in the map to see the sentiment of the hotel.
+1. Open a new tab in the Edge browser and type - http://localhost:3000. Click on one of the highlighted points in the map to see the sentiment of the hotel.
 
     ![](Images/26-WebLocal.png)
 

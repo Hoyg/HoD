@@ -125,11 +125,12 @@ With the script execution, a resource group with all the services required for t
     ![](Images/31-CognitiveServicesKey.png)
     
 
-1. Click the **dbconfig.js** file located in the        **AnalizePendingTweet** folder under the Explorer to see its content and provide the **endpoint**, **key** values of **Gremlin Endpoint** which is available in the overview page of the Graph API Cosmos db in the Azure Portal. Save and close the file. 
+1. Click the **dbconfig.js** file located in the        **AnalizePendingTweet** folder under the Explorer to see its content. Navigate to Graph API Cosmos db resource and click **Keys** option to copy the **URI** and **Primary Key** values and paste it in the dbconfig file. Save and close the file. 
 
    > The endpoint value must not include the protocol (https://) and the port number. 
 
-    ![](Images/10-GraphEndpoint.png)
+    ![](Images/10-GraphEndpoint1.png) 
+
     ![](Images/11-GraphDbConnection.png)
 
 1. In the **Integrated terminal (View menu)** window of the Visual Studio Code Editor, execute the following command: 
@@ -193,7 +194,7 @@ With the script execution, a resource group with all the services required for t
 
     ![](Images/21-WebGraphDBConnection.png)
 
-1. Expand the **client** folder, further expand the **js** folder and click the **webconfig.js** file. Provide the **Bing Maps API Key** which is available in the created Azure Resource Group. The resource name starts with **sh360bingapp...**.
+1. Expand the **client** folder, further expand the **js** folder and click the **webconfig.js** file. Provide the **Bing Maps API Key** which is available as a key value in the created Azure Resource Group under *Keys* menu as **Query Key**. The resource name starts with **sh360bingapp...**.
 
     ![](Images/22-BingMapsAPI.png)
 
